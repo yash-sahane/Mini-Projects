@@ -1,0 +1,23 @@
+.dotsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.dot {
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    color: #ccc;
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
+}
+
+.active {
+    color: #333;
+    transform: scale(1.2);
+}
