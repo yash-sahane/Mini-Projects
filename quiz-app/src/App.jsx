@@ -31,7 +31,6 @@ const App = () => {
 
   const prevQueHandler = () => {
     currQue > 0 && setCurrQue((prev) => prev - 1);
-    console.log(currQue);
   }
 
   const addLeadingZero = (number) => (number > 9 ? number : `0${number}`)

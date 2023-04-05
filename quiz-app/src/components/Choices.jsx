@@ -6,10 +6,8 @@ const Choices = ({ choices, answer, setResult, setIsCorrectSelected, setSelected
         setSelectedAnsIdx(idx)
         if (choice === answer) {
             setIsCorrectSelected(true);
-            console.log('right');
         } else {
             setIsCorrectSelected(false);
-            console.log('wrong');
         }
     }
 
