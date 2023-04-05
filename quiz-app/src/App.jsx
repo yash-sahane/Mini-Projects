@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { quiz } from './assets/quiz'
-import Result from './Result';
-import Choices from './Choices';
-import './App.css'
+import Result from './components/Result';
+import Choices from './components/Choices';
+import './styles/App.css'
 
 const App = () => {
   const { questions } = quiz;
@@ -69,7 +69,7 @@ const App = () => {
           </div>
         </div>
       ) : (
-        <Result result={result} questions={questions} />
+        <Result result={result} questions={questions} setShowResult={setShowResult} setCurrQue={setCurrQue} setResult={setResult} />
       )}
     </div>
   )

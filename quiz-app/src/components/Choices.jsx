@@ -1,5 +1,5 @@
 import React from 'react'
-import './choices.css'
+import '../styles/choices.css'
 
 const Choices = ({ choices, answer, setResult, setIsCorrectSelected, setSelectedAnsIdx, selectedAnsIdx }) => {
     const onAnsSelected = (choice, idx) => {

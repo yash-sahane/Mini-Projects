@@ -1,8 +1,14 @@
 import React from 'react'
-import './result.css'
+import '../styles/result.css'
 
-const Result = ({ result, questions }) => {
+const Result = ({ result, questions, setShowResult, setCurrQue, setResult }) => {
     const { score, correctAnswer, wrongAnswer } = result
+
+    const retryHandler = () => {
+        setResult({ score: 0, correctAnswer: 0, wrongAnswer: 0 })
+        setCurrQue(0)
+        setShowResult(false);
+    }
 
     return (
         <div className='result'>
@@ -18,6 +24,9 @@ const Result = ({ result, questions }) => {
             <p>
                 Wrong Answers:<span> {wrongAnswer}</span>
             </p>
+            <div className='flex-mid'>
+                <button onClick={retryHandler}>Retry</button>
+            </div>
         </div>
     )
 }

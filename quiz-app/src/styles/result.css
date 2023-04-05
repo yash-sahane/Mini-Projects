@@ -13,3 +13,8 @@
     color: #800080;
     font-size: 22px;
 }
+
+.flex-mid {
+    display: flex;
+    justify-content: center;
+}
