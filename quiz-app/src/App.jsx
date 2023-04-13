@@ -18,19 +18,30 @@ const App = () => {
   })
 
   const nextQueHandler = () => {
-    setSelectedAnsIdx(null);
-    currQue < quiz.totalQuestions - 1 ? setCurrQue((prev) => prev + 1) : setShowResult(true);
-    setResult(prev => {
-      return isCorrectSelected ? {
-        ...prev, score: prev.score + 5, correctAnswer: prev.correctAnswer + 1
-      } : {
-        ...prev, wrongAnswer: prev.wrongAnswer + 1
-      }
-    })
+    if (selectedAnsIdx !== null) {
+      setResult(prev => {
+        return isCorrectSelected ? {
+          ...prev, score: prev.score + 5, correctAnswer: prev.correctAnswer + 1
+        } : {
+          ...prev, wrongAnswer: prev.wrongAnswer + 1
+        }
+      });
+      setSelectedAnsIdx(null);
+      currQue < quiz.totalQuestions - 1 ? setCurrQue((prev) => prev + 1) : setShowResult(true);
+    }
   }
 
   const prevQueHandler = () => {
-    currQue > 0 && setCurrQue((prev) => prev - 1);
+    setResult(prev => {
+      return isCorrectSelected ? {
+        ...prev, score: prev.score - 5, correctAnswer: prev.correctAnswer - 1
+      } : {
+        ...prev, wrongAnswer: prev.wrongAnswer - 1
+      }
+    })
+    setSelectedAnsIdx(null);
+    setIsCorrectSelected(false);
+    currQue > 0 && setCurrQue(prev => prev - 1);
   }
 
   const addLeadingZero = (number) => (number > 9 ? number : `0${number}`)
