@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/choices.css'
 
-const Choices = ({ choices, answer, setResult, setIsCorrectSelected, setSelectedAnsIdx, selectedAnsIdx }) => {
+const Choices = ({ choices, answer, setIsCorrectSelected, setSelectedAnsIdx, selectedAnsIdx }) => {
     const onAnsSelected = (choice, idx) => {
         setSelectedAnsIdx(idx)
         if (choice === answer) {
