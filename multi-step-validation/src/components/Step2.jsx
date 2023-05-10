@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Plan from './Plan'
 import plans from '../utils/plans'
 
@@ -11,15 +11,21 @@ const Step2 = ({ prevStepHandler, nextStepHandler, formData, setFormData }) => {
 
     const { plan, isYearlyBilling, amount } = planDetails;
 
+    useEffect(() => {
+        console.log(planDetails);
+    }, [planDetails])
+
     const handleToggleChange = () => {
         !isYearlyBilling && setPlanDetails(prevDetails => ({ ...prevDetails, amount: amount * 10 }));
         isYearlyBilling && setPlanDetails(prevDetails => ({ ...prevDetails, amount: amount / 10 }));
-        setPlanDetails(prevDetails => ({ ...prevDetails, isYearlyBilling: !isYearlyBilling }))
+        setPlanDetails(prevDetails => ({ ...prevDetails, isYearlyBilling: !prevDetails.isYearlyBilling }))
+        // console.log(amount);
     }
 
     const planHandler = () => {
-        const total = formData.total + amount;
-        setFormData(prevData => ({ ...prevData, plan: plan, total: total, duration: isYearlyBilling ? 'Yearly' : 'Monthly' }));
+        setFormData(prevData => ({ ...prevData, plan: plan, total: amount, duration: isYearlyBilling ? 'Yearly' : 'Monthly' }));
+        // console.log(formData);
+        nextStepHandler();
     }
 
     return (

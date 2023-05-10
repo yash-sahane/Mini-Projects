@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const Step1 = ({ step, setStep, nextStepHandler, changeHandler, errors, setErrors, formData }) => {
+const Step1 = ({ nextStepHandler, formData, setFormData }) => {
+    const [errors, setErrors] = useState({});
+
+    const changeHandler = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevData => ({ ...prevData, [name]: value }));
+    }
 
     const validateStep = (e) => {
         e.preventDefault();

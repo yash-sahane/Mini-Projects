@@ -1,13 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import AddOn from './AddOn'
+import add_ons from '../utils/addon'
 
-const Step3 = ({ prevStepHandler, nextStepHandler }) => {
-    const add_ons = [
-        { id: 0, title: 'Online service', desc: 'Access to multiplayer games', amount: 1 },
-        { id: 1, title: 'Large storage', desc: 'Extra 1TB of cloud save', amount: 2 },
-        { id: 2, title: 'Customizable Profile', desc: 'Custom theme on your profile', amount: 2 }
+const Step3 = ({ prevStepHandler, nextStepHandler, formData, setFormData }) => {
+    const [addonDetails, setAddonDetails] = useState([]);
 
-    ]
+    const addonDetailsHandler = (add_on) => {
+        const isSelected = addonDetails.find(addon => addon.id === add_on.id);
+        if (isSelected) {
+            setAddonDetails(addonDetails.filter(addon => addon.id !== add_on.id));
+        } else {
+            setAddonDetails(prevDetails => [...prevDetails, add_on]);
+        }
+    }
+
+    const addonHandler = () => {
+        let amount = 0;
+        addonDetails.map(addon => amount += addon.amount);
+        setFormData(prevData => ({ ...prevData, addOn: addonDetails, total: amount }));
+    }
+
+    useEffect(() => {
+        console.log(addonDetails);
+    }, [addonDetails])
 
     return (
         <div>
@@ -15,12 +30,12 @@ const Step3 = ({ prevStepHandler, nextStepHandler }) => {
             <p>Add-ons help enhance your gaming experience.</p>
             <div>
                 {add_ons.map(add_on => {
-                    return <AddOn add_on={add_on} key={add_on.id} />
+                    return <AddOn add_on={add_on} key={add_on.id} addonDetails={addonDetails} setAddonDetails={setAddonDetails} addonDetailsHandler={addonDetailsHandler} formData={formData} />
                 })}
             </div>
             <div>
                 <button onClick={prevStepHandler}>Go Back</button>
-                <button onClick={nextStepHandler}>Next Step</button>
+                <button onClick={addonHandler}>Next Step</button>
             </div>
         </div>
     )

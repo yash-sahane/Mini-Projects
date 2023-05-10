@@ -9,7 +9,7 @@ const Plan = ({ plan, planDetails, setPlanDetails }) => {
         setPlanDetails((prevDetails) => ({
             ...prevDetails,
             plan: name,
-            amount: plan.amount,
+            amount: isYearlyBilling ? plan.amount * 10 : plan.amount,
         }));
     };
 
