@@ -1,7 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Step1, Step2, Step3, Step4 } from './components/index';
+import plans from './utils/plans';
 
-const App = ({ formData, setFormData }) => {
+const App = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    plan: plans[0].name,
+    planAmount: 0,
+    duration: '',
+    addOn: [],
+    total: 0,
+  });
   const [step, setStep] = useState(0);
 
   const nextStepHandler = () => {
@@ -11,6 +22,10 @@ const App = ({ formData, setFormData }) => {
   const prevStepHandler = () => {
     setStep(prevStep => prevStep - 1);
   };
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData])
 
   const stepContent = [
     { id: 1, name: 'STEP 1', title: 'YOUR INFO', component: <Step1 nextStepHandler={nextStepHandler} formData={formData} setFormData={setFormData} /> },
@@ -27,3 +42,5 @@ const App = ({ formData, setFormData }) => {
     </>
   );
 };
+
+export default App;

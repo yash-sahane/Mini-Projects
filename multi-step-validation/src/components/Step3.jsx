@@ -3,7 +3,7 @@ import AddOn from './AddOn'
 import add_ons from '../utils/addon'
 
 const Step3 = ({ prevStepHandler, nextStepHandler, formData, setFormData }) => {
-    const [addonDetails, setAddonDetails] = useState([]);
+    const [addonDetails, setAddonDetails] = useState(formData.addOn);
 
     const addonDetailsHandler = (add_on) => {
         const isSelected = addonDetails.find(addon => addon.id === add_on.id);
@@ -16,8 +16,13 @@ const Step3 = ({ prevStepHandler, nextStepHandler, formData, setFormData }) => {
 
     const addonHandler = () => {
         let amount = 0;
-        addonDetails.map(addon => amount += addon.amount);
-        setFormData(prevData => ({ ...prevData, addOn: addonDetails, total: amount }));
+        addonDetails.forEach(addon => amount += formData.duration === 'Monthly' ? addon.amount : addon.amount * 10);
+
+        const total = amount + formData.planAmount;
+
+        setFormData(prevData => ({ ...prevData, addOn: addonDetails, total: total }));
+        nextStepHandler()
+            ;
     }
 
     useEffect(() => {

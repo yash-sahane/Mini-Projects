@@ -4,9 +4,9 @@ import plans from '../utils/plans'
 
 const Step2 = ({ prevStepHandler, nextStepHandler, formData, setFormData }) => {
     const [planDetails, setPlanDetails] = useState({
-        plan: plans[0].name,
-        isYearlyBilling: false,
-        amount: plans[0].amount
+        plan: formData.plan,
+        isYearlyBilling: formData.duration === 'Yearly' ? true : false,
+        amount: formData.planAmount
     })
 
     const { plan, isYearlyBilling, amount } = planDetails;
@@ -23,7 +23,7 @@ const Step2 = ({ prevStepHandler, nextStepHandler, formData, setFormData }) => {
     }
 
     const planHandler = () => {
-        setFormData(prevData => ({ ...prevData, plan: plan, total: amount, duration: isYearlyBilling ? 'Yearly' : 'Monthly' }));
+        setFormData(prevData => ({ ...prevData, plan: plan, planAmount: amount, duration: isYearlyBilling ? 'Yearly' : 'Monthly' }));
         // console.log(formData);
         nextStepHandler();
     }

@@ -39,13 +39,13 @@ const Step1 = ({ nextStepHandler, formData, setFormData }) => {
             <p>Please provide your name, email address, and phone number.</p>
             <form onSubmit={validateStep}>
                 <label htmlFor="name">Name</label>
-                <input type="text" name='name' placeholder='eg. Stephen King' onChange={changeHandler} />
+                <input type="text" name='name' value={formData.name} placeholder='eg. Stephen King' onChange={changeHandler} />
                 {errors.name && <p>{errors.name}</p>}
                 <label htmlFor="email">Email Address</label>
-                <input type="text" name="email" placeholder='eg. stephenking@lorem.com' onChange={changeHandler} />
+                <input type="text" name="email" value={formData.email} placeholder='eg. stephenking@lorem.com' onChange={changeHandler} />
                 {errors.email && <p>{errors.email}</p>}
                 <label htmlFor="phone">Phone Number</label>
-                <input type="number" name="phone" placeholder='eg. +1 234 567 890' onChange={changeHandler} />
+                <input type="number" name="phone" value={formData.phone} placeholder='eg. +1 234 567 890' onChange={changeHandler} />
                 {errors.phone && <p>{errors.phone}</p>}
                 <button type='submit'>Next Step</button>
             </form>
