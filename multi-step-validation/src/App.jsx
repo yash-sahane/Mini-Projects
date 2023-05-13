@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Step1, Step2, Step3, Step4 } from './components/index';
 import plans from './utils/plans';
+import Steps from './components/Steps';
 
 const App = () => {
   const [formData, setFormData] = useState({
@@ -35,11 +36,12 @@ const App = () => {
   ];
 
   return (
-    <>
-      <div>
+    <div className='w-full h-full flex justify-center align-center'>
+      <div className='flex flex-row justify-between mx-auto my-auto w-full p-4 bg-white rounded-lg'>
+        <Steps stepContent={stepContent} step={step} />
         {stepContent[step].component}
       </div>
-    </>
+    </div>
   );
 };
 
