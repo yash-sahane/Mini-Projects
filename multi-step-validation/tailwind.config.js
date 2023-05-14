@@ -10,7 +10,7 @@ export default {
         ubuntu: ['Ubuntu', 'sans-serif'],
         'ubuntu-medium': ['Ubuntu Medium', 'sans-serif'],
         'ubuntu-bold': ['Ubuntu Bold', 'sans-serif']
-      }, 
+      },
       colors: {
         marineBlue: 'hsl(213, 96%, 18%)',
         purplishBlue: 'hsl(243, 100%, 62%)',
@@ -24,10 +24,9 @@ export default {
         white: 'hsl(0, 0%, 100%)',
       },
       backgroundImage: {
-        'sidebar-desktop' : "url('/src/assets/images/bg-sidebar-desktop.svg')"
-      }
+        'sidebar-desktop': "url('/src/assets/images/bg-sidebar-desktop.svg')"
+      },
     },
-  },
-  plugins: [],
+    plugins: [],
+  }
 }
-

@@ -3,13 +3,13 @@ import React from 'react'
 const Step = ({ stepInfo, step }) => {
     const { id, name, title } = stepInfo;
     return (
-        <div>
+        <div className='flex p-4'>
             <div>
-                {id}
+                <p className='rounded-full px-4 py-2 border  border-white text-magnolia'>{id}</p>
             </div>
-            <div>
-                {name}
-                {title}
+            <div className='flex flex-col ml-4'>
+                <p className='text-pastelBlue text-sm'>{name}</p>
+                <h1 className='text-magnolia font-semibold tracking-widest'>{title}</h1>
             </div>
         </div>
     )

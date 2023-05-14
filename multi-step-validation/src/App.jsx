@@ -37,9 +37,11 @@ const App = () => {
 
   return (
     <div className='w-full h-full flex justify-center align-center'>
-      <div className='flex flex-row justify-between mx-auto my-auto w-full p-4 bg-white rounded-lg'>
+      <div className='flex flex-row justify-between mx-auto my-auto w-60rem h-37.5rem p-4 bg-white rounded-2xl'>
         <Steps stepContent={stepContent} step={step} />
-        {stepContent[step].component}
+        <div className='w-70per p-page'>
+          {stepContent[step].component}
+        </div>
       </div>
     </div>
   );
