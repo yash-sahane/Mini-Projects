@@ -22,6 +22,7 @@ export default {
         magnolia: 'hsl(217, 100%, 97%)',
         alabaster: 'hsl(231, 100%, 99%)',
         white: 'hsl(0, 0%, 100%)',
+        // btn : '#174a8b'
       },
       backgroundImage: {
         'sidebar-desktop': "url('/src/assets/images/bg-sidebar-desktop.svg')"

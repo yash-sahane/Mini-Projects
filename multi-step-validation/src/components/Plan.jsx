@@ -14,10 +14,10 @@ const Plan = ({ plan, planDetails, setPlanDetails }) => {
     };
 
     return (
-        <div className={`${planDetails.plan === name ? 'active' : 'plan-div'}`} onClick={handlePlanClick}>
+        <div className={`hover:border-purplishBlue h-44 p-5 flex-1 border-2 rounded-lg cursor-pointer ${planDetails.plan === name ? 'border-2 border-purplishBlue bg-magnolia' : ''}`} onClick={handlePlanClick}>
             <img src={icon} alt='' />
-            <p>{name}</p>
-            {isYearlyBilling ? <span>${plan.amount * 10}/yr</span> : <span>${plan.amount}/mo</span>}
+            <p className='mt-12 font-bold'>{name}</p>
+            {isYearlyBilling ? <span className='text-coolGray'>${plan.amount * 10}/yr</span> : <span className='text-coolGray'>${plan.amount}/mo</span>}
         </div>
     );
 };

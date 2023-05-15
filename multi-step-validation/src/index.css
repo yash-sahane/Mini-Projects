@@ -6,6 +6,14 @@
     box-sizing: border-box
 }
 
+p,
+h1,
+h2,
+label,
+span {
+    @apply text-marineBlue;
+}
+
 @font-face {
     font-family: 'Ubuntu';
     src: url('./assets/fonts/Ubuntu-Regular.ttf') format('truetype');
@@ -21,7 +29,7 @@
     src: url('./assets/fonts/Ubuntu-Bold.ttf') format('truetype');
 }
 
-p, h1, h2, label, input{
+p, h1, h2, label, input, button, span{
     @apply font-ubuntu;
 }
 
@@ -44,6 +52,6 @@ p, h1, h2, label, input{
     }
 
     .p-page{
-        padding: 2.5rem 5rem;
+        padding: 2.5rem 5rem 0 5rem;
     } 
 }
