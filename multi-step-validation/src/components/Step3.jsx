@@ -30,17 +30,17 @@ const Step3 = ({ prevStepHandler, nextStepHandler, formData, setFormData }) => {
     }, [addonDetails])
 
     return (
-        <div>
-            <h2>Pick add-ons</h2>
-            <p>Add-ons help enhance your gaming experience.</p>
-            <div>
+        <div className='h-full flex flex-col'>
+            <h2 className='text-4xl font-bold'>Pick add-ons</h2>
+            <p className='text-coolGray mt-2'>Add-ons help enhance your gaming experience.</p>
+            <div className='flex flex-col gap-3 mt-8'>
                 {add_ons.map(add_on => {
                     return <AddOn add_on={add_on} key={add_on.id} addonDetails={addonDetails} setAddonDetails={setAddonDetails} addonDetailsHandler={addonDetailsHandler} formData={formData} />
                 })}
             </div>
-            <div>
-                <button onClick={prevStepHandler}>Go Back</button>
-                <button onClick={addonHandler}>Next Step</button>
+            <div className='flex justify-between mt-auto'>
+                <button onClick={prevStepHandler} className='px-5 py-2.5 rounded-md mb-2 text-coolGray'>Go Back</button>
+                <button onClick={addonHandler} className='stepButton'>Next Step</button>
             </div>
         </div>
     )

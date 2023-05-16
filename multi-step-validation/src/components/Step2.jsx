@@ -52,7 +52,7 @@ const Step2 = ({ prevStepHandler, nextStepHandler, formData, setFormData }) => {
                 <span className={`ml-2 font-bold ${!isYearlyBilling && 'text-coolGray'}`}>Yearly</span>
             </div>
             <div className='flex justify-between mt-auto'>
-                <button onClick={prevStepHandler} className='px-5 py-2.5 rounded-md mb-2'>Go Back</button>
+                <button onClick={prevStepHandler} className='px-5 py-2.5 rounded-md mb-2 text-coolGray font-bold'>Go Back</button>
                 <button onClick={planHandler} className='stepButton'>Next Step</button>
             </div>
         </div>

@@ -1,0 +1,16 @@
+.checkbox-icon::before {
+    content: "";
+    display: inline-block;
+    width: 0.625rem;
+    /* Adjust the width as needed */
+    height: 0.625rem;
+    /* Adjust the height as needed */
+    border-bottom: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(45deg);
+    visibility: hidden;
+}
+
+input[type="checkbox"]:checked+.checkbox-icon::before {
+    visibility: visible;
+}

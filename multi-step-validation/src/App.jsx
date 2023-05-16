@@ -32,7 +32,7 @@ const App = () => {
     { id: 1, name: 'STEP 1', title: 'YOUR INFO', component: <Step1 nextStepHandler={nextStepHandler} formData={formData} setFormData={setFormData} /> },
     { id: 2, name: 'STEP 2', title: 'SELECT PLAN', component: <Step2 nextStepHandler={nextStepHandler} prevStepHandler={prevStepHandler} formData={formData} setFormData={setFormData} /> },
     { id: 3, name: 'STEP 3', title: 'ADD-ONS', component: <Step3 nextStepHandler={nextStepHandler} prevStepHandler={prevStepHandler} formData={formData} setFormData={setFormData} /> },
-    { id: 4, name: 'STEP 4', title: 'SUMMARY', component: <Step4 nextStepHandler={nextStepHandler} prevStepHandler={prevStepHandler} /> },
+    { id: 4, name: 'STEP 4', title: 'SUMMARY', component: <Step4 nextStepHandler={nextStepHandler} prevStepHandler={prevStepHandler} formData={formData} /> },
   ];
 
   return (
