@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'mobile': '375px',
+      },
       fontFamily: {
         ubuntu: ['Ubuntu', 'sans-serif'],
         'ubuntu-medium': ['Ubuntu Medium', 'sans-serif'],

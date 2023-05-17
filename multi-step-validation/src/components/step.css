@@ -1,10 +1,9 @@
-@media (min-width: 375px) {
+/* @media (max-width: 375px) {
     .step-media{
-        flex-direction: row;
-        display: none;
+        flex-direction: row !important;
     }
 
     .app-media{
-        flex-direction: column;
+        flex-direction: column !important;
     }
-}
+} */
