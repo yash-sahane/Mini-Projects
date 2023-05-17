@@ -35,7 +35,7 @@ const Step1 = ({ nextStepHandler, formData, setFormData }) => {
   }
 
   return (
-    <div className=' h-full'>
+    <div className='h-full'>
       <h1 className='text-4xl font-bold'>Personal info</h1>
       <p className='text-coolGray mt-2'>Please provide your name, email address, and phone number.</p>
       <form onSubmit={validateStep} className='mt-8 h-4/5 flex flex-col'>

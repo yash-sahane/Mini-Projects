@@ -9,7 +9,10 @@ input::-webkit-inner-spin-button {
 }
 
 .input{
-    @apply p-2 outline-none border-2 rounded-lg border-coolGray opacity-50 mt-1 font-semibold text-marineBlue;
+    @apply p-2 outline-none border-2 rounded-lg border-coolGray opacity-50 mt-1 font-semibold text-black;
+}
+.input{
+    /* color: hsl(0, 85%, 50%) !important; */
 }
 
 .stepButton{
