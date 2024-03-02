@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Chat from './Pages/Chat'
+import Chat from './assets/Chat'
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
 

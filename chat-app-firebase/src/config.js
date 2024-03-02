@@ -34,6 +34,7 @@ const logInWithEmailAndPassword = async (email, password) => {
     }
 }
 
+// register user into auth and add extra info about user 
 const registerWithEmailAndPassword = async (userInfo) => {
     try {
         const { firstName, lastName, userName, email, pass: password } = userInfo;
