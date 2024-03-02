@@ -1,46 +1,62 @@
-import React, { useState } from 'react'
-import { logInWithEmailAndPassword, registerWithEmailAndPassword } from '../config'
+import React, { useState } from 'react';
+import { registerWithEmailAndPassword } from '../config';
 
 const Signup = () => {
     const [userInfo, setUserInfo] = useState({
         firstName: '',
         lastName: '',
-        userName: '',
+        displayName: '',
         email: '',
         pass: '',
-    })
+        avatar: null,
+    });
 
     const changeHandler = (e) => {
         const { value, name } = e.target;
 
-        setUserInfo(userInfo => ({
-            ...userInfo, [name]: value
-        }))
-    }
+        setUserInfo((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
 
-    const submitHandler = (e) => {
+    const fileChangeHandler = (e) => {
+        const file = e.target.files[0];
+        setUserInfo((prev) => ({
+            ...prev,
+            avatar: file,
+        }));
+    };
+
+    const submitHandler = async (e) => {
         e.preventDefault();
-        registerWithEmailAndPassword(userInfo);
-        console.log(userInfo);
-    }
+        try {
+            await registerWithEmailAndPassword(userInfo);
+            console.log('User registered successfully!');
+        } catch (e) {
+            console.error(e.message);
+        }
+    };
 
     return (
         <div>
-            <form action="" onSubmit={submitHandler}>
+            <form onSubmit={submitHandler}>
                 <label htmlFor="firstName">First Name</label>
-                <input type="text" name='firstName' onChange={changeHandler} />
+                <input type="text" name="firstName" onChange={changeHandler} />
                 <label htmlFor="lastName">Last Name</label>
-                <input type="text" name='lastName' onChange={changeHandler} />
-                <label htmlFor="userName">Username</label>
-                <input type="text" name='userName' onChange={changeHandler} />
+                <input type="text" name="lastName" onChange={changeHandler} />
+                <label htmlFor="displayName">Display Name</label>
+                <input type="text" name="displayName" onChange={changeHandler} />
                 <label htmlFor="email">Email</label>
-                <input type="text" name='email' onChange={changeHandler} />
-                <label htmlFor="pass">Pass</label>
-                <input type="pass" name='pass' onChange={changeHandler} />
-                <button type='submit'>Submit</button>
+                <input type="text" name="email" onChange={changeHandler} />
+                <label htmlFor="pass">Password</label>
+                <input type="password" name="pass" onChange={changeHandler} />
+                <label htmlFor="avatar">Add an avatar</label>
+                <input type="file" onChange={fileChangeHandler} />
+                <button type="submit">Submit</button>
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default Signup
+export default Signup;

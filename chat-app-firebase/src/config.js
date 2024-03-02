@@ -9,6 +9,8 @@ import {
     addDoc,
 } from "firebase/firestore";
 
+import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyD4eiRdQW9SNWVAJt3koiWRm_Mcg27KWi8",
@@ -23,11 +25,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+const storage = getStorage(app);
 
 // only passing email and pass from Login component and with the help of auth using signIn function provided by firebase to login
 const logInWithEmailAndPassword = async (email, password) => {
     try {
-        await signInWithEmailAndPassword(auth, email, password);
+        const response = await signInWithEmailAndPassword(auth, email, password);
+        console.log(response.user);
     } catch (err) {
         console.error(err);
         alert(err.message);
@@ -37,15 +41,20 @@ const logInWithEmailAndPassword = async (email, password) => {
 // register user into auth and add extra info about user 
 const registerWithEmailAndPassword = async (userInfo) => {
     try {
-        const { firstName, lastName, userName, email, pass: password } = userInfo;
+        const { firstName, lastName, displayName, email, pass: password, avatar } = userInfo;
         const response = await createUserWithEmailAndPassword(auth, email, password);
         const user = response.user;
-        console.log(user);
+
+        if (avatar) {
+            console.log(avatar);
+            await uploadAvatar(displayName, avatar);
+        }
+
         await addDoc(collection(db, "users"), {
             uid: user.uid,
             firstName,
             lastName,
-            userName,
+            displayName,
             authProvider: "local",
             email,
         });
@@ -53,11 +62,30 @@ const registerWithEmailAndPassword = async (userInfo) => {
         console.error(e);
         alert(e.message);
     }
-
 }
 
-const logoutHandler = () => {
-    signOut(auth);
+const uploadAvatar = async (displayName, avatarFile) => {
+    const storageRef = ref(storage, `avatars/${displayName}`);
+
+    // Upload the file
+    await uploadBytes(storageRef, avatarFile);
+
+    // Get the download URL
+    const downloadURL = await getDownloadURL(storageRef);
+
+    // Update the user's avatar URL in the Firestore database
+    console.log('Avatar uploaded successfully:', downloadURL);
+};
+
+const logoutHandler = async () => {
+    const confirmLogout = window.confirm('Are you sure want to logout ?');
+    if (confirmLogout) {
+        try {
+            await signOut(auth);
+        } catch (e) {
+            console.log(e.message);
+        }
+    }
 }
 
-export { auth, logInWithEmailAndPassword, registerWithEmailAndPassword, logoutHandler };
+export { auth, db, logInWithEmailAndPassword, registerWithEmailAndPassword, logoutHandler };
