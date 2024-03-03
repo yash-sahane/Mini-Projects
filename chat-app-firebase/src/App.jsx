@@ -1,15 +1,26 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Login from './Pages/Login'
 import Signup from './Pages/Signup'
 import Home from './Pages/Home'
+import { AuthContext } from './Context/AuthContextProvider'
 
 const App = () => {
+  const { currentUser } = useContext(AuthContext);
+
+  const ProtectedRoute = ({ children }) => {
+    if (!currentUser) {
+      return <Navigate to="/login" />;
+    } else {
+      return children;
+    }
+  };
+
   return (
     <div>
       <Router>
         <Routes>
-          <Route path='/' element={<Home />}></Route>
+          <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
         </Routes>

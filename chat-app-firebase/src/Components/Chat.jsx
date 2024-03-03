@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { auth, logoutHandler } from '../config';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import SendMessage from './SendMessage';
+import { AuthContext } from '../Context/AuthContextProvider';
+import SearchUser from './SearchUser';
 
 const Chat = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const { currentUser } = useContext(AuthContext);
+    console.log(currentUser);
     const navigate = useNavigate();
 
     const signoutHandler = async () => {
@@ -20,6 +23,9 @@ const Chat = () => {
     return (
         <div>
             <button onClick={signoutHandler}>Logout</button>
+            <img src={currentUser.photoURL} alt="" style={{ width: '50px' }} />
+            <p>{currentUser.displayName}</p>
+            <SearchUser />
             <SendMessage />
         </div>
     )

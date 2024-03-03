@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 import {
     getFirestore,
     query,
@@ -45,16 +45,23 @@ const registerWithEmailAndPassword = async (userInfo) => {
         const response = await createUserWithEmailAndPassword(auth, email, password);
         const user = response.user;
 
+        let avatarURL = null;
         if (avatar) {
             console.log(avatar);
-            await uploadAvatar(displayName, avatar);
+            avatarURL = await uploadAvatar(displayName, avatar);
         }
+
+        await updateProfile(user, {
+            displayName,
+            photoURL: avatarURL,
+        });
 
         await addDoc(collection(db, "users"), {
             uid: user.uid,
             firstName,
             lastName,
             displayName,
+            photoURL: avatarURL,
             authProvider: "local",
             email,
         });
@@ -75,6 +82,9 @@ const uploadAvatar = async (displayName, avatarFile) => {
 
     // Update the user's avatar URL in the Firestore database
     console.log('Avatar uploaded successfully:', downloadURL);
+
+    return downloadURL;
+
 };
 
 const logoutHandler = async () => {
