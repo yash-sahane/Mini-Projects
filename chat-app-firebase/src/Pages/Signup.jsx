@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { registerWithEmailAndPassword } from '../config';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
     const [userInfo, setUserInfo] = useState({
@@ -10,6 +11,8 @@ const Signup = () => {
         pass: '',
         avatar: null,
     });
+
+    const navigate = useNavigate();
 
     const changeHandler = (e) => {
         const { value, name } = e.target;
@@ -33,6 +36,7 @@ const Signup = () => {
         try {
             await registerWithEmailAndPassword(userInfo);
             console.log('User registered successfully!');
+            navigate('/');
         } catch (e) {
             console.error(e.message);
         }

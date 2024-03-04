@@ -7,6 +7,8 @@ import {
     collection,
     where,
     addDoc,
+    setDoc,
+    doc,
 } from "firebase/firestore";
 
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -65,6 +67,8 @@ const registerWithEmailAndPassword = async (userInfo) => {
             authProvider: "local",
             email,
         });
+
+        await setDoc(doc(db, 'userChats', user.uid), {})
     } catch (e) {
         console.error(e);
         alert(e.message);

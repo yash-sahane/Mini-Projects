@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { auth, logInWithEmailAndPassword } from '../config';
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [userInfo, setUserInfo] = useState({
@@ -43,6 +43,7 @@ const Login = () => {
                 <label htmlFor="pass">Pass</label>
                 <input type="pass" name='pass' onChange={changeHandler} />
                 <button type='submit'>Submit</button>
+                <Link to='/signup'>Signup Here</Link>
             </form>
         </div>
     )
