@@ -31,8 +31,8 @@ const Chats = () => {
         <div>
             {Object.entries(chats)?.map((chat) => (
                 <div key={chat[0]} onClick={() => addChatHandler(chat[1].userInfo)}>
-                    <img src={chat[1].userInfo.photoURL} alt="" style={{ width: '50px' }} />
-                    <p>{chat[1].userInfo.displayName}</p>
+                    <img src={chat[1].userInfo?.photoURL} alt="" style={{ width: '50px' }} />
+                    <p>{chat[1].userInfo?.displayName}</p>
                     <p>{chat[1].lastMessage?.message}</p>
                 </div>
             ))}
