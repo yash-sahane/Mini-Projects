@@ -102,4 +102,4 @@ const logoutHandler = async () => {
     }
 }
 
-export { auth, db, logInWithEmailAndPassword, registerWithEmailAndPassword, logoutHandler };
+export { auth, db, storage, logInWithEmailAndPassword, registerWithEmailAndPassword, logoutHandler };

@@ -3,14 +3,15 @@ import { AuthContext } from "./AuthContextProvider";
 
 export const ChatContext = createContext();
 
-export const ChatContextProvider = ({ Children }) => {
+export const ChatContextProvider = ({ children }) => {
     const { currentUser } = useContext(AuthContext);
     const INITIAL_STATE = {
-        chatId: '',
+        chatId: 'null',
         user: {}
     }
 
     const chatReducer = (state, action) => {
+        // console.log(action.payload);
         switch (action.type) {
             case 'CHANGE_USER':
                 return {
@@ -25,6 +26,6 @@ export const ChatContextProvider = ({ Children }) => {
     const [state, dispatch] = useReducer(chatReducer, INITIAL_STATE);
 
     return <ChatContext.Provider value={{ data: state, dispatch }}>
-        <Children />
+        {children}
     </ChatContext.Provider>
 }

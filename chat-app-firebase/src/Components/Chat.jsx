@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import SendMessage from './SendMessage';
 import { AuthContext } from '../Context/AuthContextProvider';
 import SearchUser from './SearchUser';
+import ChatBox from './ChatBox';
 
 const Chat = () => {
     const { currentUser } = useContext(AuthContext);
-    console.log(currentUser);
+    // console.log(currentUser);
     const navigate = useNavigate();
 
     const signoutHandler = async () => {
@@ -26,7 +27,7 @@ const Chat = () => {
             <img src={currentUser.photoURL} alt="" style={{ width: '50px' }} />
             <p>{currentUser.displayName}</p>
             <SearchUser />
-            <SendMessage />
+            <ChatBox />
         </div>
     )
 }
