@@ -4,6 +4,7 @@ import Login from './Pages/Login'
 import Signup from './Pages/Signup'
 import Home from './Pages/Home'
 import { AuthContext } from './Context/AuthContextProvider'
+import './App.css';
 
 const App = () => {
   const { currentUser } = useContext(AuthContext);
@@ -17,7 +18,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className='app'>
       <Router>
         <Routes>
           <Route path='/' element={<ProtectedRoute><Home /></ProtectedRoute>}></Route>

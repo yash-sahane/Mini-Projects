@@ -3,6 +3,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Context/AuthContextProvider';
 import { db } from '../config';
 import { ChatContext } from '../Context/ChatContextProvider';
+import './Chats.css';
+import SearchUser from './SearchUser';
+import UserProfile from './UserProfile';
 
 const Chats = () => {
     const [chats, setChats] = useState({});
@@ -13,7 +16,6 @@ const Chats = () => {
         const getChats = () => {
             const unsub = onSnapshot(doc(db, 'userChats', currentUser.uid), (doc) => {
                 setChats(doc.data());
-                // console.log(Object.entries(doc.data()));
             });
 
             return () => unsub();
@@ -28,14 +30,23 @@ const Chats = () => {
     }
 
     return (
-        <div>
-            {Object.entries(chats)?.map((chat) => (
-                <div key={chat[0]} onClick={() => addChatHandler(chat[1].userInfo)}>
-                    <img src={chat[1].userInfo?.photoURL} alt="" style={{ width: '50px' }} />
-                    <p>{chat[1].userInfo?.displayName}</p>
-                    <p>{chat[1].lastMessage?.message}</p>
-                </div>
-            ))}
+        <div className='chats'>
+            <UserProfile />
+            <SearchUser />
+            <div className='users_chats'>
+                {Object.entries(chats)?.sort((a, b) => a[1].date - b[1].date).map((chat) => (
+                    <div className='users_chat' key={chat[0]} onClick={() => addChatHandler(chat[1].userInfo)}>
+                        <span className='users_chat_vr'></span>
+                        <div className='users_chat_info'>
+                            <div className='profile_img_div'>
+                                <img src={chat[1].userInfo?.photoURL} alt="" className='user_profile_img' />
+                            </div>
+                            <p>{chat[1].userInfo?.displayName}</p>
+                        </div>
+                        <p className='users_chat_lastMsg'>{'> ' + chat[1].lastMessage?.message}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

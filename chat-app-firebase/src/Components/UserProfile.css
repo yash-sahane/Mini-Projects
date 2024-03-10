@@ -1,0 +1,25 @@
+.user_profile{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user_profile_img{
+    width: 50px;
+    object-fit: contain;
+}
+
+.profile_img_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.signout_btn{
+    color: #e40253;
+    cursor: pointer;
+}

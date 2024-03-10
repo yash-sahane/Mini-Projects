@@ -1,0 +1,10 @@
+.main_page{
+    background-color: white;
+    display: flex;
+    width: 60%;
+    border-radius: 30px;
+    height: 500px;
+    max-width: 900px;
+    width: 80%;
+    min-width: 600px;
+}

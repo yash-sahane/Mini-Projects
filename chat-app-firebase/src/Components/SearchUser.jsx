@@ -2,7 +2,10 @@ import { collection, doc, getDoc, getDocs, query, serverTimestamp, setDoc, updat
 import React, { useEffect, useState } from 'react'
 import { AuthContext } from '../Context/AuthContextProvider';
 import { useContext } from 'react';
-import { db } from '../config';
+import { db, logoutHandler } from '../config';
+import { CiSearch } from "react-icons/ci";
+import { useNavigate } from 'react-router-dom';
+import './SearchUser.css';
 
 const SearchUser = () => {
     const [username, setUsername] = useState('');
@@ -64,12 +67,13 @@ const SearchUser = () => {
     }
 
     return (
-        <div>
-            <label htmlFor="search">Search User</label>
-            <input type="search" name='search' value={username} onKeyDown={keyHandler} onChange={(e) => setUsername(e.target.value)} />
+        <div className='search_user'>
+            <CiSearch />
+            <input type="search" name='search' placeholder='Search user' value={username} onKeyDown={keyHandler} onChange={(e) => setUsername(e.target.value)} />
             {user && <div onClick={userClickHandler}>
-                <h3>Searched User</h3>
-                <img src={user.profileURL} alt="" style={{ width: '50px' }} />
+                <div className='profile_img_div'>
+                    <img src={user.profileURL} alt="" className='user_profile_img' />
+                </div>
                 <p>{user.displayName}</p>
             </div>}
         </div>

@@ -1,10 +1,11 @@
 import React from 'react'
 import Chat from '../Components/Chat'
 import Chats from '../Components/Chats'
+import './Home.css';
 
 const Home = () => {
     return (
-        <div>
+        <div className='main_page'>
             <Chats />
             <Chat />
         </div>
