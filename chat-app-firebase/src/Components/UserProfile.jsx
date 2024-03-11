@@ -23,6 +23,7 @@ const UserProfile = () => {
             <div className='profile_img_div'>
                 <img src={currentUser.photoURL} alt="" className='user_profile_img' />
             </div>
+            <p>{currentUser.displayName}</p>
             <FaPowerOff className='signout_btn' onClick={signoutHandler} />
         </div>
     )

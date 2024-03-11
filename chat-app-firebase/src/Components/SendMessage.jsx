@@ -1,16 +1,21 @@
 import { Timestamp, arrayUnion, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { auth, db, storage } from '../config';
 import { ChatContext } from '../Context/ChatContextProvider';
 import { v4 as uuid } from 'uuid';
 import { AuthContext } from '../Context/AuthContextProvider';
+import { GrAttachment } from "react-icons/gr";
+import { LuSend } from "react-icons/lu";
+import './SendMessages.css';
 
 const SendMessage = () => {
     const [message, setMessage] = useState('');
     const [file, setFile] = useState(null);
     const { data } = useContext(ChatContext);
     const { currentUser } = useContext(AuthContext);
+
+    const fileInputRef = useRef(null);
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -54,13 +59,32 @@ const SendMessage = () => {
         setFile(null);
     };
 
+    const handleAttachmentClick = () => {
+        fileInputRef.current.click();
+    };
+
     return (
         <div>
             <form action="" onSubmit={submitHandler}>
-                <label htmlFor="messageInput">Enter message</label>
-                <input type="text" name="messageInput" value={message} onChange={(e) => setMessage(e.target.value)} />
-                <input type="file" name="file" onChange={(e) => setFile(e.target.files[0])} />
-                <button type="submit">Send</button>
+                <div className='send_msg_input_div'>
+                    <GrAttachment className='attach_file_icon' onClick={handleAttachmentClick} />
+                    <input
+                        type="text"
+                        className='send_msg_input'
+                        name="messageInput"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder='Enter message'
+                    />
+                    <input
+                        type="file"
+                        name="file"
+                        ref={fileInputRef}
+                        style={{ display: 'none' }}
+                        onChange={(e) => setFile(e.target.files[0])}
+                    />
+                    <LuSend className='send_msg_icon' />
+                </div>
             </form>
         </div>
     );

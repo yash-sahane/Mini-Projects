@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ChatContext } from '../Context/ChatContextProvider';
 import Message from './Message';
 import { db } from '../config';
+import './Messages.css';
 
 const Messages = () => {
     const [messages, setMessages] = useState([]);
@@ -20,13 +21,18 @@ const Messages = () => {
         return () => unsub();
     }, [data.chatId]);
 
+
+    useEffect(() => {
+        // console.log(messages);
+    }, [messages]);
+
     return (
-        <div>
+        <div className='messages'>
             {messages.map(msg => (
                 <Message message={msg} key={msg.id} />
             ))}
         </div>
-    )
+    );
 }
 
 export default Messages

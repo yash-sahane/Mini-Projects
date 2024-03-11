@@ -68,7 +68,7 @@ const SearchUser = () => {
 
     return (
         <div className='search_user'>
-            <CiSearch />
+            <CiSearch className='search_user_icon' />
             <input type="search" name='search' placeholder='Search user' value={username} onKeyDown={keyHandler} onChange={(e) => setUsername(e.target.value)} />
             {user && <div onClick={userClickHandler}>
                 <div className='profile_img_div'>

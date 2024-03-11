@@ -18,6 +18,7 @@
     margin: 15px 0;
     padding: 15px;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .users_chat_vr{
@@ -35,4 +36,39 @@
 .users_chat_info p{
     font-weight: 600;
     margin-left: 10px;
+}
+
+.users_chat_img_name_div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user_chat_img_name {
+    gap: 10px;
+}
+
+.user_chat_img_name p {
+    font-weight: 600;
+}
+
+.no_user_chat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.user_chat_img_name {
+    display: flex;
+    align-items: center;
+}
+
+.users_chat_lastMsgTime {
+    font-size: 14px;
+    color: #9c9a9a;
+}
+
+.users_chat_lastMsg {
+    margin-top: 5px;
 }

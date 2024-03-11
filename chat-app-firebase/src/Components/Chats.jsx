@@ -29,6 +29,35 @@ const Chats = () => {
         dispatch({ type: 'CHANGE_USER', payload: user });
     }
 
+    useEffect(() => {
+        // console.log(chats);
+    }, [chats])
+
+    const calculateTimeAgo = (timestamp) => {
+        const now = new Date();
+        const messageTime = timestamp.toDate();
+        const timeDifference = now - messageTime;
+
+        // Calculate time difference in various units
+        const secondsDifference = Math.floor(timeDifference / 1000);
+        const minutesDifference = Math.floor(secondsDifference / 60);
+        const hoursDifference = Math.floor(minutesDifference / 60);
+        const daysDifference = Math.floor(hoursDifference / 24);
+        const monthsDifference = Math.floor(daysDifference / 30);
+
+        if (monthsDifference > 0) {
+            return `${monthsDifference} ${monthsDifference === 1 ? 'month' : 'months'} ago`;
+        } else if (daysDifference > 0) {
+            return `${daysDifference} ${daysDifference === 1 ? 'day' : 'days'} ago`;
+        } else if (hoursDifference > 0) {
+            return `${hoursDifference} ${hoursDifference === 1 ? 'hour' : 'hours'} ago`;
+        } else if (minutesDifference > 0) {
+            return `${minutesDifference} ${minutesDifference === 1 ? 'minute' : 'minutes'} ago`;
+        } else {
+            return `${secondsDifference} ${secondsDifference === 1 ? 'second' : 'seconds'} ago`;
+        }
+    };
+
     return (
         <div className='chats'>
             <UserProfile />
@@ -37,11 +66,16 @@ const Chats = () => {
                 {Object.entries(chats)?.sort((a, b) => a[1].date - b[1].date).map((chat) => (
                     <div className='users_chat' key={chat[0]} onClick={() => addChatHandler(chat[1].userInfo)}>
                         <span className='users_chat_vr'></span>
-                        <div className='users_chat_info'>
-                            <div className='profile_img_div'>
-                                <img src={chat[1].userInfo?.photoURL} alt="" className='user_profile_img' />
+                        <div className='users_chat_img_name_div'>
+                            <div className='user_chat_img_name'>
+                                <div className='profile_img_div'>
+                                    <img src={chat[1].userInfo?.photoURL} alt="" className='user_profile_img' />
+                                </div>
+                                <p>{chat[1].userInfo?.displayName}</p>
                             </div>
-                            <p>{chat[1].userInfo?.displayName}</p>
+                            <p className='users_chat_lastMsgTime'>
+                                {calculateTimeAgo(chat[1]?.date)}
+                            </p>
                         </div>
                         <p className='users_chat_lastMsg'>{'> ' + chat[1].lastMessage?.message}</p>
                     </div>

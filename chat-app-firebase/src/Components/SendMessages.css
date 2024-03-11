@@ -1,20 +1,28 @@
-.search_user{
+.send_msg_input_div{
     padding: 5px;
     display: flex;
     align-items: center;
     border-radius: 20px;
-    margin-top: 15px;
     background-color: #faf9f9;
+    margin: 10px;
     border: 1px solid rgb(182, 182, 182);
 }
 
-.search_user input{
+.send_msg_input{
     border: none;
     outline: none;
     padding: 3px;
     background-color: transparent;
+    padding: 5px;
+    width: 100%;
 }
 
-.search_user_icon{
-    margin: 0 6px;
+.attach_file_icon{
+    margin: 0 10px;
+    cursor: pointer;
+}
+.send_msg_icon{
+    margin: 0 10px;
+    cursor: pointer;
+    border: 1px solid black;
 }
