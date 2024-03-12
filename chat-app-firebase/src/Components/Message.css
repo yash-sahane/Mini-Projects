@@ -1,0 +1,20 @@
+.msg_wrapper {
+    padding: 7px 15px;
+}
+
+.msg_txt_div {
+    padding: 7px 15px;
+    border-radius: 50px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    width: fit-content;
+    max-width: 50%;
+    min-width: 100px;
+}
+
+.msg_txt {
+}
+
+.ownerMsg {
+    margin-left: auto;
+}

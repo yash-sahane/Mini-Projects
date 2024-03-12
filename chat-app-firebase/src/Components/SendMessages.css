@@ -1,14 +1,13 @@
-.send_msg_input_div{
+.send_msg_input_div {
     padding: 5px;
     display: flex;
     align-items: center;
     border-radius: 20px;
     background-color: #faf9f9;
     margin: 10px;
-    border: 1px solid rgb(182, 182, 182);
+    border: 1px solid rgb(229, 229, 229);
 }
-
-.send_msg_input{
+.send_msg_input {
     border: none;
     outline: none;
     padding: 3px;
@@ -17,12 +16,15 @@
     width: 100%;
 }
 
-.attach_file_icon{
-    margin: 0 10px;
+.attach_file_icon_div,
+.send_msg_icon_div {
+    display: flex;
+    padding: 5px;
     cursor: pointer;
 }
-.send_msg_icon{
-    margin: 0 10px;
-    cursor: pointer;
-    border: 1px solid black;
+
+.send_message_div {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+        rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+        rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 }

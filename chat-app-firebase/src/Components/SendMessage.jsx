@@ -64,10 +64,12 @@ const SendMessage = () => {
     };
 
     return (
-        <div>
+        <div className='send_message_div'>
             <form action="" onSubmit={submitHandler}>
                 <div className='send_msg_input_div'>
-                    <GrAttachment className='attach_file_icon' onClick={handleAttachmentClick} />
+                    <div className='attach_file_icon_div' onClick={handleAttachmentClick}>
+                        <GrAttachment className='attach_file_icon' />
+                    </div>
                     <input
                         type="text"
                         className='send_msg_input'
@@ -83,7 +85,9 @@ const SendMessage = () => {
                         style={{ display: 'none' }}
                         onChange={(e) => setFile(e.target.files[0])}
                     />
-                    <LuSend className='send_msg_icon' />
+                    <div className='send_msg_icon_div'>
+                        <LuSend className='send_msg_icon' />
+                    </div>
                 </div>
             </form>
         </div>

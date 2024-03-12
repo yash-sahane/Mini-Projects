@@ -1,4 +1,4 @@
-import { Children, createContext, useContext, useReducer } from "react";
+import { Children, createContext, useContext, useEffect, useReducer } from "react";
 import { AuthContext } from "./AuthContextProvider";
 
 export const ChatContext = createContext();
@@ -23,7 +23,12 @@ export const ChatContextProvider = ({ children }) => {
         }
     }
 
+
     const [state, dispatch] = useReducer(chatReducer, INITIAL_STATE);
+
+    useEffect(() => {
+        console.log(state);
+    }, [state])
 
     return <ChatContext.Provider value={{ data: state, dispatch }}>
         {children}
