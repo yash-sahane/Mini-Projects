@@ -92,13 +92,10 @@ const uploadAvatar = async (displayName, avatarFile) => {
 };
 
 const logoutHandler = async () => {
-    const confirmLogout = window.confirm('Are you sure want to logout ?');
-    if (confirmLogout) {
-        try {
-            await signOut(auth);
-        } catch (e) {
-            console.log(e.message);
-        }
+    try {
+        await signOut(auth);
+    } catch (e) {
+        console.log(e.message);
     }
 }
 

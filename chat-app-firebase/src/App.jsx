@@ -5,6 +5,9 @@ import Signup from './Pages/Signup'
 import Home from './Pages/Home'
 import { AuthContext } from './Context/AuthContextProvider'
 import './App.css';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 const App = () => {
   const { currentUser } = useContext(AuthContext);

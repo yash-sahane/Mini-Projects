@@ -1,10 +1,20 @@
-.user_profile{
+.user_profile {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.user_profile_img{
+.user_profile_left {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.user_profile_displayName {
+    font-weight: 600;
+}
+
+.user_profile_img {
     width: 40px;
     object-fit: contain;
 }
@@ -19,7 +29,7 @@
     overflow: hidden;
 }
 
-.signout_btn{
+.signout_btn {
     color: #e40253;
     cursor: pointer;
 }

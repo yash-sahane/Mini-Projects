@@ -19,10 +19,6 @@ const Signup = () => {
 
     const fileInputRef = useRef(null);
 
-    const triggerFileInput = () => {
-        fileInputRef.current.click();
-    };
-
     const navigate = useNavigate();
 
     const changeHandler = (e) => {
@@ -91,7 +87,7 @@ const Signup = () => {
                             style={{ display: 'none' }}
                         />
                         <button className='authSubmitBtn' type="submit">Submit</button>
-                        <p>Already have an account <Link to='/signin'>Signin</Link></p>
+                        <p>Already have an account <Link to='/login'>Signin</Link></p>
                     </form>
                 </div>
             </div>

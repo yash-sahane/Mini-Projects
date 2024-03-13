@@ -1,6 +1,6 @@
 export const calculateTimeAgo = (timestamp) => {
     const now = new Date();
-    const messageTime = timestamp.toDate();
+    const messageTime = timestamp?.toDate();
     const timeDifference = now - messageTime;
 
     // Calculate time difference in various units
@@ -19,6 +19,6 @@ export const calculateTimeAgo = (timestamp) => {
     } else if (minutesDifference > 0) {
         return `${minutesDifference} ${minutesDifference === 1 ? 'minute' : 'minutes'} ago`;
     } else {
-        return `${secondsDifference} ${secondsDifference === 1 ? 'second' : 'seconds'} ago`;
+        return 'Just now';
     }
 };

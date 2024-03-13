@@ -17,9 +17,20 @@
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     border-radius: 5px;
     margin: 15px 0;
-    padding: 15px;
+    padding: 10px 15px;
     cursor: pointer;
     overflow: hidden;
+    position: relative;
+}
+
+.users_chat_vr_div {
+    position: absolute;
+    content: "";
+    width: 3px;
+    height: 100px;
+    background: linear-gradient(0deg, #0395de 0%, #5d24c6 35%, #c50272 100%);
+    top: 0;
+    left: 0;
 }
 
 .users_chat_vr {
@@ -40,15 +51,22 @@
 }
 
 .users_chat_img_name_div {
+    /* display: flex;
+    align-items: center;
+    justify-content: space-between; */
+}
+.user_chat_profile {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-}
-
-.user_chat_img_name {
     gap: 10px;
 }
-
+.user_chat_img_name {
+    gap: 10px;
+    justify-content: space-between;
+}
+.users_chat_lastMsgTime {
+    font-weight: 400 !important;
+}
 .user_chat_img_name p {
     font-weight: 600;
 }
